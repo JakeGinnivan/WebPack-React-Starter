@@ -6,6 +6,8 @@ When adding Redux in, I suggest we make this config change:
 
 - some config line
 + replace with this
+
+The reason is that .....
 ```
 
 I'm not sure the best way to write this up at the moment but we can play it by ear. If it sounds like a good idea then push the rewritten branch to your fork and post a link to it in the issue. A maintainer of this repo will then reset the branch to the branch in your fork then force push.

@@ -1,0 +1,24 @@
+{
+  "name": "universal-react-starter",
+  "version": "1.0.0",
+  "description": "Good base for getting started building a universal react site",
+  "main": "app/index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeGinnivan/WebPack-React-Starter.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JakeGinnivan/WebPack-React-Starter/issues"
+  },
+  "homepage": "https://github.com/JakeGinnivan/WebPack-React-Starter/tree/universal-react#readme",
+  "devDependencies": {
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^4.3.0"
+  }
+}

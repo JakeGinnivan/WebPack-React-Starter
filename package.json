@@ -4,6 +4,27 @@
   "description": "Good base for getting started building a universal react site",
   "main": "app/index.js",
   "scripts": {
+    "start": "better-npm-run start",
+    "build:dev": "webpack --config scripts/webpack.config.dev.js",
+    "build:prod": "webpack --config scripts/webpack.config.prod.js"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "concurrent --kill-others \"better-npm-run hot-server\" \"better-npm-run dev-server\"",
+      "env": {
+        "hot": true,
+        "HOT_PORT": 3001
+      }
+    },
+    "dev-server": {
+      "command": "node server/server.js",
+      "env": {
+        "PORT": 3000
+      }
+    },
+    "hot-server": {
+      "command": "node scripts/hot-server.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -16,9 +37,18 @@
   },
   "homepage": "https://github.com/JakeGinnivan/WebPack-React-Starter/tree/universal-react#readme",
   "devDependencies": {
+    "better-npm-run": "0.0.8",
+    "clean-webpack-plugin": "^0.1.8",
+    "concurrently": "^2.0.0",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^4.3.0"
-  }
+    "eslint-plugin-react": "^4.3.0",
+    "express": "^4.13.4",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.0",
+    "webpack-hot-middleware": "^2.10.0"
+  },
+  "dependencies": {}
 }

@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch localhost with sourcemaps",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}/app",
+      "userDataDir": "c:\\ProgramData\\ChromeDebugProfile",
+      "runtimeArgs": ["--disable-session-crashed-bubble", "--disable-session-restore", "--disable-infobars", "--incognito"]
+    }
+  ]
+}

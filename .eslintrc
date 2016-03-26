@@ -1,6 +1,11 @@
 {
   "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
   "rules": {
-    "semi": [ 2, "never" ]
+    "semi": [ 2, "never" ],
+    "comma-dangle": [ 2, "never" ],
+    "consistent-return": 0
   }
 }

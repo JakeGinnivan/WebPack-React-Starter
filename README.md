@@ -77,3 +77,47 @@ Also maybe useful? https://blog.jetbrains.com/webstorm/2015/09/debugging-webpack
 
 ### 3. ES2015+ support
 Next is adding in Babel 6 for transpilation. This enables us to use ES2015 and plug in more babel transforms later.
+
+### 4. React
+Now time to actually start building something. 
+
+#### Hot reloading
+One of the advantages of WebPack is the in built support for hot-reloading, unfortunately hot-reloading still has compromises. There are 3 main options:
+
+1. React hot loader  
+The first hot reloading attempt, it is tied to webpack and works by wrapping the exported component with a proxy then when your component changes it accepts the new version and the proxy points at the new version of your components code. Limitations/notes:
+   - Components do not get unmounted/remounted and keep their local state
+   - All DOM state is preserved (focus, scroll position etc)
+   - Only works for default exported components
+   - Does not work well with decorated components
+   - Does not work with stateless components
+2. React hot transform  
+The second attempt moves the logic from WebPack into Babel, this is because as a Babel plugin it is easier to detect what is a React and make the required changes to the source in place. Limitations/notes:
+   - Components do not get unmounted/remounted and keep their local state
+   - All DOM state is preserved (focus, scroll position etc)
+   - Works with multiple components in a single file
+   - Works with wrapped/decorated components
+   - Does not work with stateless components
+3. Re-render app  
+This is the simplest approach and just uses native WebPack hot reloading. When anything changes, simply re-render your root component. Notes/limitations:
+   - Components are unmounted/remounted
+   - DOM state is *not* preserved
+   - Local component state lost
+   - Works with stateless components
+   - Has far less edge cases due to it's simplicity
+
+We are going to go for #3, this is because we are going to use Redux. This means our application state is actually held outside of our React application, this means we can reload the entire application but keep the state.
+This blog post by Dan is a good summary of the state of the hot-reload ecosystem.
+
+https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf
+
+We also have installed `redbox-react` which we use to display any error messages if rendering fails.
+
+#### Structure
+The client will start with `index.js` which renders the application, the pages of our site will live under `pages` each with an `index.js` which is the entry point for that page.
+
+`app.js` is our apps root component, it initialises routing and other things. It is re-rendered by hot-reload when anything under it changes.
+
+
+#### Other stuff
+We installed a module called `html-webpack-template`, this gives us a more flexible and powerfull template for `HtmlWebpackPlugin` to work with. One of the options gives us a mount point for our React application. `react-router` also has been installed which gives us client side routing. 

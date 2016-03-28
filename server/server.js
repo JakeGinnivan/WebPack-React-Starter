@@ -18,6 +18,7 @@ app.use('*', function (req, res) {
     <title>universal-react</title>
   </head>
   <body>
+    <div id="app"></div>
     <script src='http://localhost:${bundlePort}/dist/bundle.js' charSet='UTF-8'></script>
   </body>
 </html>`)

@@ -1,16 +1,40 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
 import { browserHistory } from 'react-router'
-
+import { syncHistoryWithStore } from 'react-router-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import reducers from './app.redux'
 const dest = document.getElementById('app')
 
 if (process.env.NODE_ENV !== 'production') {
   window.React = React // enable debugger
 }
 
+// Create redux store
+const middleware = [thunk]
+let finalCreateStore
+if (__DEV__) {
+  finalCreateStore = compose(
+    applyMiddleware(...middleware),
+    // Add support for Redux devtools chrome extension
+    window.devToolsExtension ? window.devToolsExtension() : _ => _
+  )(createStore)
+} else {
+  finalCreateStore = applyMiddleware(...middleware)(createStore)
+}
+const store = finalCreateStore(reducers)
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store)
+
+// Render app function
 let render = () => {
   let App = require('./app').default
-  ReactDOM.render(<App history={browserHistory} />, dest)
+  ReactDOM.render(
+    <Provider store={store}>
+      <App history={history} />
+    </Provider>, dest)
 }
 
 // If hot reload is enabled then accept changes to ./app and
@@ -33,6 +57,9 @@ if (module.hot) {
   }
   module.hot.accept('./app', () => {
     setTimeout(render)
+  })
+  module.hot.accept('./app.redux', () => {
+    store.replaceReducer(require('./app.redux').default)
   })
 }
 

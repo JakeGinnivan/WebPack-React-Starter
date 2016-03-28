@@ -8,5 +8,8 @@
     "comma-dangle": [ 2, "never" ],
     "consistent-return": 0,
     "jsx-quotes": ["error", "prefer-single"]
+  },
+  "globals": {
+    "__DEV__": true
   }
 }

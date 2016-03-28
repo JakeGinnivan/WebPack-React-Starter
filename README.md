@@ -132,3 +132,14 @@ Allow us to `require('./app-container.module.scss')` which will return a javascr
 Styles config is defined in dev and prod configs individually, this is because in prod we extract all styles to a separate .css file.
 
 Then in each environment config we specify two loaders, one for .module.scss (css modules) and one for normal scss files (if .module is not in the filename).
+
+### 6. Redux
+Redux allows us to keep our application state in a single atom which is a little strange at first but then becomes a pleasure to work with down the track. Naturally when using React you will move towards one or two top level components containing all your application state anyway so once you have made it to there Redux is the next step.
+
+There are a few things which this step does:
+
+1. Creates a application reducer which can contain anything which is application level.
+2. Hook in the [Redux chrome devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+3. Integrate react-router and redux with `react-router-redux`
+4. Extend our hot-reloading to reload our reducers as they change
+5. Add the `redux-thunk` middleware which allows us to create action creators which can dispatch multiple events. This is handy for things like API calls where you initiate them, then they either succeed or fail

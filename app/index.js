@@ -1,1 +1,3 @@
-console.log('Loaded!')
+const what = 'world'
+
+console.log(`Hello ${what}`)

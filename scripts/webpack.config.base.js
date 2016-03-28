@@ -8,6 +8,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   module: {
     loaders: [
+      { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
       { test: /\.json$/, loader: 'json' }
     ]
   },

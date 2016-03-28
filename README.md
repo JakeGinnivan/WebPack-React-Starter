@@ -73,3 +73,7 @@ config.output.devtoolFallbackModuleFilenameTemplate = function(info) {
 To our dev webpack config to rewrite the module names to files on disk rather than serving through webpack. This gives us F5 debug support in VS Code
 
 Also maybe useful? https://blog.jetbrains.com/webstorm/2015/09/debugging-webpack-applications-in-webstorm/
+
+
+### 3. ES2015+ support
+Next is adding in Babel 6 for transpilation. This enables us to use ES2015 and plug in more babel transforms later.

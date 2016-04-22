@@ -17,7 +17,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
   inline: true,
   lazy: false,
   stats: {
-    colors: true
+    colors: true,
+    assets: false,
+    chunks: false
   }
 }))
 

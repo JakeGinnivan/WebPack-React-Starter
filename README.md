@@ -143,3 +143,16 @@ There are a few things which this step does:
 3. Integrate react-router and redux with `react-router-redux`
 4. Extend our hot-reloading to reload our reducers as they change
 5. Add the `redux-thunk` middleware which allows us to create action creators which can dispatch multiple events. This is handy for things like API calls where you initiate them, then they either succeed or fail
+
+### 7. Simple Server Side Rendering
+Most 'universal' samples solve all the problems. The main complications for webpack applications is that we require styles. Node.js cannot do this, so we need other ways to handle styles on the server side. The other one is pre-loading data on the server to load into the initial render.
+
+For the moment we are going to ignore styles and loading data but keep the server side rendering really simple so we can understand the concepts.
+
+The best place to look is the changes to `server/server.js`, which add in:
+
+1. Build the redux store on the server
+2. Load the client side routes on the server
+3. Resolve the react-router props/component for the current express request route
+4. Render the current application route as a string
+5. Add the rendered string into our containing div

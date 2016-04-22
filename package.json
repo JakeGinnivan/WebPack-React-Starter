@@ -13,6 +13,7 @@
       "command": "concurrent --kill-others \"better-npm-run hot-server\" \"better-npm-run dev-server\"",
       "env": {
         "hot": true,
+        "HOT_PORT": 3001,
         "NODE_ENV": "development"
       }
     },
@@ -52,9 +53,9 @@
     "eslint-plugin-jsx-a11y": "^0.6.2",
     "eslint-plugin-react": "^4.3.0",
     "express": "^4.13.4",
-    "nodemon": "^1.9.1",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
+    "nodemon": "^1.9.1",
     "postcss-loader": "^0.8.2",
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.2.0",
@@ -72,6 +73,7 @@
     "react-router-redux": "^4.0.0",
     "redbox-react": "^1.2.2",
     "redux": "^3.3.1",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "serialize-javascript": "^1.2.0"
   }
 }

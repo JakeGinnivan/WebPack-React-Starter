@@ -31,16 +31,16 @@ config.output.devtoolFallbackModuleFilenameTemplate = function (info) {
 
 config.module.loaders.push({
   test: /^((?!\.module).)*\.s?css$/,
-  loaders: ['style-loader','css?importLoaders=1', 'postcss', 'resolve-url', 'sass']
+  loaders: ['style-loader', 'css?importLoaders=1', 'postcss', 'resolve-url', 'sass']
 })
 config.module.loaders.push({
   test: /\.module\.s?css$/,
   loaders: [
-      'style',
-      'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-      'postcss',
-      'resolve-url',
-      'sass'
+    'style',
+    'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+    'postcss',
+    'resolve-url',
+    'sass'
   ]
 })
 

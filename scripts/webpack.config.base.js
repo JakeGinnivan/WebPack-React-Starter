@@ -4,7 +4,10 @@
 
 var path = require('path')
 var autoprefixer = require('autoprefixer')
+var webpack = require('webpack')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+var webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools-config')
 
 module.exports = {
   module: {
@@ -27,7 +30,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: path.normalize(path.join(__dirname, '../')) })
+    new CleanWebpackPlugin(['dist'], { root: path.normalize(path.join(__dirname, '../')) }),
+    new webpack.DefinePlugin({
+      __DEV__: true
+    }),
+    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
+       .development(process.env.NODE_ENV === 'development')
   ]
 }
 

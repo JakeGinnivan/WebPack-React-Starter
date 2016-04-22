@@ -14,6 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Create redux store
 const middleware = [thunk]
+
 let finalCreateStore
 if (__DEV__) {
   finalCreateStore = compose(
@@ -24,7 +25,7 @@ if (__DEV__) {
 } else {
   finalCreateStore = applyMiddleware(...middleware)(createStore)
 }
-const store = finalCreateStore(reducers)
+const store = finalCreateStore(reducers, window.__data)
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
 

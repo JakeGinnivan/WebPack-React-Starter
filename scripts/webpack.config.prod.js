@@ -12,7 +12,7 @@ config.output.filename = 'bundle.[chunkhash].js'
 
 config.module.loaders.push({
   test: /^((?!\.module).)*\.s?css$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css!resolve-url!sass'),
+  loader: ExtractTextPlugin.extract('style-loader', 'css!resolve-url!sass')
 })
 config.module.loaders.push({
   test: /\.module\.s?css$/,

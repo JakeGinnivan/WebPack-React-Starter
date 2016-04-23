@@ -19,9 +19,7 @@ The other branches are different starting points, some may be Universal, others 
 
 ## Branches
 ### webpack-react-redux
-This branch is a starter for a React/Redux project using WebPack, there are a number of additional modules included. 
-
-[View webpack-react-redux branch](https://github.com/JakeGinnivan/WebPack-React-Starter/blob/webpack-react-redux/README.md)
+Not done yet, focusing on the univeral-react branch. This will end up being mainly the same with the last few commits dropped off.
 
 ### universal-react
 This branch is much like the webpack-react-redux branch, except it also has support for universal rendering (initial render on the server). 

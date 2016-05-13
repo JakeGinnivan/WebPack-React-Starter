@@ -121,3 +121,14 @@ The client will start with `index.js` which renders the application, the pages o
 
 #### Other stuff
 We installed a module called `html-webpack-template`, this gives us a more flexible and powerfull template for `HtmlWebpackPlugin` to work with. One of the options gives us a mount point for our React application. `react-router` also has been installed which gives us client side routing. 
+
+### 5. All about dem styles
+Next up is styles, I am going to go for sass with css-modules support. We will also put autoprefixer in to add in vendor specific browser prefixes automatically.
+
+#### CSS Modules
+Allow us to `require('./app-container.module.scss')` which will return a javascript object with keys for all of the classes defined in that css file.
+
+#### Loader config
+Styles config is defined in dev and prod configs individually, this is because in prod we extract all styles to a separate .css file.
+
+Then in each environment config we specify two loaders, one for .module.scss (css modules) and one for normal scss files (if .module is not in the filename).

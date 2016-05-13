@@ -4,12 +4,23 @@
 
 var webpack = require('webpack')
 var config = require('./webpack.config.base')
+var ExtractTextPlugin = require('extract-text-plugin')
 
 config.devtool = 'source-map'
 config.entry = './app/index'
 config.output.filename = 'bundle.[chunkhash].js'
 
+config.module.loaders.push({
+  test: /^((?!\.module).)*\.s?css$/,
+  loader: ExtractTextPlugin.extract('style-loader', 'css!resolve-url!sass'),
+})
+config.module.loaders.push({
+  test: /\.module\.s?css$/,
+  loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!resolve-url!sass')
+})
+
 config.plugins.push(
+  new ExtractTextPlugin('style.[chunkhash].css', { allChunks: true }),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.DefinePlugin({
     __DEV__: false,

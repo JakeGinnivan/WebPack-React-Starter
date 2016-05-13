@@ -3,6 +3,7 @@
 'use-strict'
 
 var path = require('path')
+var autoprefixer = require('autoprefixer')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
@@ -11,6 +12,9 @@ module.exports = {
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
       { test: /\.json$/, loader: 'json' }
     ]
+  },
+  postcss() {
+    return [autoprefixer]
   },
   output: {
     path: path.resolve(path.join(__dirname, '../dist')),

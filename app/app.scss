@@ -1,0 +1,9 @@
+@import "~normalize.css/normalize.css";
+
+$bg: lightgrey;
+$fg: black;
+
+body {
+  color: $fg;
+  background: $bg;
+}
